@@ -109,12 +109,17 @@ c       product cost
       end type ProcUnit
       
 c     Define physical properties of thermoelectric element
-      type TE
+      type TEHP
         character*4 :: ID ! dientifier in process flow diagram
-        real*8 :: Resistance ! electric resistance (ohm)
         real*8 :: alpha ! Seebect coefficient (V/K)
-        real*8 :: kappa ! thermal conductivity (W/m-K)
-      end type TE
+        real*8 :: K ! thermal conductance (W/K)
+        real*8 :: R ! electric resistance (ohm)
+        integer :: NumNode ! number of p-n pair of nodes
+        real*8 :: A(2), L(2)
+        real*8 :: Km, Rc, Rm
+        real*8 :: ThermConductivity(2) ! thermal conductivity of p- and n-node (W/m-K)
+        real*8 :: ElecResistivity(2) ! electrical resistivity of p- and n-node (ohm/m)
+      end type TEHP
 
 c     Define common variables
       integer :: COM_OPT(16)
